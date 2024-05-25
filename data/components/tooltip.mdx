@@ -1,0 +1,60 @@
+---
+metaTitle: Tooltip - Homeschool Network UI
+metaDescription: A tooltip component for displaying additional information on hover or focus.
+name: Tooltip
+---
+
+<FlexGroup>
+  # Tooltip
+
+  <Description
+    hasRadixLink={false}
+  >
+    A tooltip component for displaying additional information on hover or focus.
+  </Description>
+</FlexGroup>
+
+<PreviewComponent
+  componentName='Tooltip'
+  demoComponent={<TooltipDemo />}
+  demoCodePath='TooltipDemo'
+/>
+
+<FlexGroup>
+  ## Installation
+
+Copy and paste the following code into your project.
+
+<ComponentSource code='Tooltip' />
+
+Update the import paths to match your project setup.
+
+## Anatomy
+
+Import all parts and piece them together.
+
+<CodeBlock code={`import Tooltip from "@/components/ui/tooltip"`} />
+
+<CodeBlock
+  code={`<Tooltip content="Sample tooltip" position="top">Hover me</Tooltip>`}
+/>
+</FlexGroup>
+
+<FlexGroup>
+## Props
+
+### Content
+
+<TooltipProps
+  variantName='content'
+  variantProps={['string']}
+/>
+
+### Position
+
+<TooltipProps
+  variantName='position'
+  variantProps={['top', 'bottom', 'left', 'right']}
+/>
+
+</FlexGroup>

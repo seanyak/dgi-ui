@@ -1,0 +1,58 @@
+---
+metaTitle: Tabs - Homeschool Network UI
+metaDescription: A tab component for organizing content into multiple panels.
+name: Tabs
+---
+
+import TabsProps from '../components/componentProps/tabsProps';
+
+<FlexGroup>
+  # Tabs
+
+  <Description hasRadixLink={false}>
+    A tab component for organizing content into multiple panels.
+  </Description>
+</FlexGroup>
+
+<PreviewComponent
+  componentName="Tabs"
+  demoComponent={<TabsDemo />}
+  demoCodePath="TabsDemo"
+/>
+
+<FlexGroup>
+  ## Installation
+
+  Copy and paste the following code into your project.
+
+  <ComponentSource code="Tabs" />
+
+  Update the import paths to match your project setup.
+
+  ## Anatomy
+
+  Import all parts and piece them together.
+
+  <CodeBlock code={`import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"`} />
+
+  <CodeBlock
+    code={`<Tabs defaultValue="tab1">
+  <TabsList>
+    <TabsTrigger value="tab1" variant="underline">Tab 1</TabsTrigger>
+    <TabsTrigger value="tab2" variant="underline">Tab 2</TabsTrigger>
+    <TabsTrigger value="tab3" variant="underline">Tab 3</TabsTrigger>
+  </TabsList>
+  <TabsContent value="tab1">Content for Tab 1</TabsContent>
+  <TabsContent value="tab2">Content for Tab 2</TabsContent>
+  <TabsContent value="tab3">Content for Tab 3</TabsContent>
+</Tabs>`}
+/>
+</FlexGroup>
+
+<FlexGroup>
+  ## Props
+
+  ### TabsTrigger Variant
+
+  <TabsProps variantName="variant" variantProps={['underline', 'button']} />
+</FlexGroup>

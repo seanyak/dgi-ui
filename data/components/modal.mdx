@@ -1,0 +1,60 @@
+---
+metaTitle: Modal - Homeschool Network UI
+metaDescription: A modal dialog component for displaying content overlays.
+name: Modal
+---
+
+<FlexGroup>
+  # Modal
+
+  <Description
+    hasRadixLink={false}
+  >
+    A modal dialog component for displaying content overlays.
+  </Description>
+</FlexGroup>
+
+<PreviewComponent
+  componentName='Modal'
+  demoComponent={<ModalDemo />}
+  demoCodePath='ModalDemo'
+/>
+
+<FlexGroup>
+  ## Installation
+
+Copy and paste the following code into your project.
+
+<ComponentSource code='Modal' />
+
+Update the import paths to match your project setup.
+
+## Anatomy
+
+Import all parts and piece them together.
+
+<CodeBlock code={`import Modal from "@/components/ui/modal"`} />
+
+<CodeBlock
+  code={`<Modal isOpen={true} onClose={() => {}} title="Sample Modal">Content here</Modal>`}
+/>
+</FlexGroup>
+
+<FlexGroup>
+## Props
+
+### isOpen
+
+<ModalProps
+  variantName='isOpen'
+  variantProps={['true', 'false']}
+/>
+
+### Title
+
+<ModalProps
+  variantName='title'
+  variantProps={['string']}
+/>
+
+</FlexGroup>

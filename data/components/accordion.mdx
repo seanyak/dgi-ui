@@ -1,0 +1,53 @@
+---
+metaTitle: Accordion - Homeschool Network UI
+metaDescription: An accordion component for displaying collapsible sections of content.
+name: Accordion
+---
+
+<FlexGroup>
+  # Accordion
+
+  <Description
+    hasRadixLink={false}
+  >
+    An accordion component for displaying collapsible sections of content.
+  </Description>
+</FlexGroup>
+
+<PreviewComponent
+  componentName='Accordion'
+  demoComponent={<AccordionDemo />}
+  demoCodePath='AccordionDemo'
+/>
+
+<FlexGroup>
+  ## Installation
+
+Copy and paste the following code into your project.
+
+<ComponentSource code='Accordion' />
+
+Update the import paths to match your project setup.
+
+## Anatomy
+
+Import all parts and piece them together.
+
+<CodeBlock code={`import Accordion from "@/components/ui/accordion"`} />
+
+<CodeBlock
+  code={`<Accordion items={[{ title: 'Item 1', content: <p>Content 1</p> }]} />`}
+/>
+</FlexGroup>
+
+<FlexGroup>
+## Props
+
+### Items
+
+<AccordionProps
+  variantName='items'
+  variantProps={['Array of items']}
+/>
+
+</FlexGroup>

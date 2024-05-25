@@ -1,0 +1,60 @@
+---
+metaTitle: Dropdown - Homeschool Network UI
+metaDescription: A dropdown menu component for selecting options.
+name: Dropdown
+---
+
+<FlexGroup>
+  # Dropdown
+
+  <Description
+    hasRadixLink={false}
+  >
+    A dropdown menu component for selecting options.
+  </Description>
+</FlexGroup>
+
+<PreviewComponent
+  componentName='Dropdown'
+  demoComponent={<DropdownDemo />}
+  demoCodePath='DropdownDemo'
+/>
+
+<FlexGroup>
+  ## Installation
+
+Copy and paste the following code into your project.
+
+<ComponentSource code='Dropdown' />
+
+Update the import paths to match your project setup.
+
+## Anatomy
+
+Import all parts and piece them together.
+
+<CodeBlock code={`import Dropdown from "@/components/ui/dropdown"`} />
+
+<CodeBlock
+  code={`<Dropdown options={[{ value: '1', label: 'One' }]} onChange={() => {}} />`}
+/>
+</FlexGroup>
+
+<FlexGroup>
+## Props
+
+### Options
+
+<DropdownProps
+  variantName='options'
+  variantProps={['Array of options']}
+/>
+
+### Placeholder
+
+<DropdownProps
+  variantName='placeholder'
+  variantProps={['string']}
+/>
+
+</FlexGroup>

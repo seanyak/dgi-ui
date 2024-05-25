@@ -1,0 +1,1030 @@
+---
+metaTitle: Installation - DGI-UI
+metaDescription: How to install dependencies and structure your app.
+---
+
+<FlexGroup>
+
+# Installation
+<Description>
+How to install dependencies and structure your app.
+</Description>
+
+</FlexGroup>
+
+<FlexGroup>
+
+## Frameworks
+
+DGI-UI is currently built for Next.JS / React projects. We'll focus on setting up the necessary dependencies and files for your project.
+
+</FlexGroup>
+
+<FlexGroup>
+
+<Step index={1}>Create your NEXT.JS project</Step>
+
+Begin with creating a new Next.js project using create-next-app:
+
+<CodeBlock
+code={`npx create-next-app@latest my-app --typescript --tailwind --eslint`}
+/>
+
+<ExternalLink
+    href='https://nextjs.org/docs/getting-started/installation'
+    title='Next.JS Documentation'
+/>
+
+</FlexGroup>
+
+<FlexGroup>
+
+### Typescript
+
+DGI-UI components are built with TypeScript, a move that's not just technical but strategic. TypeScript 
+isn't just a language; it's a safeguard that enhances your code’s durability, catching errors before they 
+spiral into nightmares. It offers a smoother ride with your IDE, making autocompletion and type checking 
+seamless. This is how our components reach their fullest potential. Still, we're looking to extend our components to JavaScript in 
+the not-so-distant future.
+<ExternalLink
+    href='https://www.typescriptlang.org/download'
+    title='Typescript Documentation'
+/>
+
+</FlexGroup>
+
+<FlexGroup>
+
+### Tailwind
+
+DGI-UI leans on Tailwind CSS to handle its component styling. We’re toying with the idea of rolling out support 
+for CSS and SASS down the line. Stay tuned, because we're always cooking up something new.
+
+<ExternalLink
+    href='https://tailwindcss.com/docs/installation'
+    title='Tailwind Documentation'
+/>
+
+</FlexGroup>
+
+<FlexGroup>
+
+<Step index={2}>Global CSS</Step>
+
+DGI-UI leverages CSS variables to maintain a unified design system, streamlining the process for any future 
+tweaks or overhauls.
+
+Copy and paste the following code into your `global.css` file.
+
+<CodeBlock code={`@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font Faces */
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Regular.woff2') format('woff2'),
+       url('/fonts/Satoshi-Regular.woff') format('woff');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Medium.woff2') format('woff2'),
+       url('/fonts/Satoshi-Medium.woff') format('woff');
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-SemiBold.woff2') format('woff2'),
+       url('/fonts/Satoshi-SemiBold.woff') format('woff');
+  font-style: normal;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Bold.woff2') format('woff2'),
+       url('/fonts/Satoshi-Bold.woff') format('woff');
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-ExtraBold.woff2') format('woff2'),
+       url('/fonts/Satoshi-ExtraBold.woff') format('woff');
+  font-style: normal;
+  font-weight: 800;
+}
+
+/* Root Variables */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 6%;
+
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 6%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 6%;
+
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+
+    --primary: 240 6% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 6% 10%;
+
+    --accent: 240 5% 96%;
+    --accent-foreground: ;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --ring: 240 5% 65%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 6%;
+    --foreground: 0 0% 98%;
+
+    --muted: 240 4% 15.9%;
+    --muted-foreground: 240 5% 65%;
+
+    --popover: 240 10% 6%;
+    --popover-foreground: 0 0% 98%;
+
+    --card: 240 10% 6%;
+    --card-foreground: 0 0% 98%;
+
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 6% 10%;
+
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 0 0% 98%;
+
+    --accent: 240 4% 16%;
+    --accent-foreground: ;
+
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 0 86% 97%;
+
+    --ring: 240 3.7% 15.9%;
+  }
+}
+
+/* Base Styles */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply overflow-x-hidden bg-background text-foreground;
+  }
+
+  a:hover {
+    cursor: pointer;
+  }
+
+  .wire1 {
+    @apply border border-emerald-500;
+  }
+
+  .wire2 {
+    @apply border border-sky-500;
+  }
+
+  .wire3 {
+    @apply border border-red-400;
+  }
+}
+
+/* Utility Styles */
+@layer utilities {
+  /* Light, transparent scrollbar */
+  .scrollbar-light::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .scrollbar-light::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-light::-webkit-scrollbar-thumb {
+    border: 2.8px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    border-radius: 100px;
+    background-color: #e4e4e7;
+  }
+
+  .codeEl {
+    @apply rounded-sm bg-muted p-1 text-[14px] text-muted-foreground shadow-sm;
+  }
+}
+
+/* Badge Styles */
+.badge-primary {
+  @apply text-white bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold;
+}
+
+.badge-gray {
+  @apply text-gray-800 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold;
+}
+
+.badge-yellow {
+  @apply text-yellow-800 bg-yellow-200 rounded-full px-3 py-1 text-sm font-semibold;
+}
+
+.badge-green {
+  @apply text-green-800 bg-green-200 rounded-full px-3 py-1 text-sm font-semibold;
+}
+
+.badge-blue {
+  @apply text-blue-800 bg-blue-200 rounded-full px-3 py-1 text-sm font-semibold;
+}
+
+.badge-purple {
+  @apply text-purple-800 bg-purple-200 rounded-full px-3 py-1 text-sm font-semibold;
+}
+
+.badge-red {
+  @apply text-red-800 bg-red-200 rounded-full px-3 py-1 text-sm font-semibold;
+}
+
+.badge-destructive {
+  @apply text-white bg-red-500 rounded-full px-3 py-1 text-sm font-semibold;
+}
+
+/* Card Styles */
+.card {
+  @apply bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105;
+}
+
+.card img {
+  @apply w-full h-48 object-cover;
+}
+
+.card-body {
+  @apply p-6;
+}
+
+.card-title {
+  @apply text-xl font-semibold text-gray-800 mb-4;
+}
+
+.card p {
+  @apply text-gray-600;
+}
+
+.card-primary {
+  @apply shadow-lg rounded-lg overflow-hidden;
+}
+
+.card-primary img {
+  @apply w-full h-48 object-cover;
+}
+
+.card-primary h2 {
+  @apply text-xl font-semibold text-gray-800 p-1;
+}
+
+.card-primary h3 {
+  @apply text-xl font-bold text-gray-800 p-1;
+}
+
+.card-primary p {
+  @apply text-gray-600 p-2;
+}
+
+/* Dropdown Styles */
+.dropdown-menu-trigger {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+  background-color: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu-trigger:hover {
+  background-color: #f3f4f6;
+  border-color: #9ca3af;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+body.dark-mode .dropdown-menu-trigger {
+  color: #e5e7eb;
+  background-color: #374151;
+  border-color: #4b5563;
+}
+
+body.dark-mode .dropdown-menu-trigger:hover {
+  background-color: #4b5563;
+  border-color: #6b7280;
+}
+
+.dropdown-menu-chevron {
+  margin-left: 0.5rem;
+  color: #6b7280;
+  transition: transform 0.2s ease;
+}
+
+.dropdown-menu-trigger[aria-expanded="true"] .dropdown-menu-chevron {
+  transform: rotate(180deg);
+}
+
+body.dark-mode .dropdown-menu-chevron {
+  color: #d1d5db;
+}
+
+.dropdown-menu-content {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 0.5rem;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body.dark-mode .dropdown-menu-content {
+  background-color: #374151;
+  border-color: #4b5563;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.dropdown-menu-item {
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  color: #1f2937;
+  cursor: pointer;
+  transition: background-color 0.3s, padding-left 0.2s;
+}
+
+.dropdown-menu-item:hover {
+  background-color: #e5e7eb;
+  padding-left: 1.5rem;
+}
+
+body.dark-mode .dropdown-menu-item {
+  color: #e5e7eb;
+}
+
+body.dark-mode .dropdown-menu-item:hover {
+  background-color: #4b5563;
+}
+
+/* Select component styles */
+
+.select-trigger {
+  width: 100%;
+  max-width: 275px;
+  padding: 0.5rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  background-color: white;
+  color: #1f2937;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.select-trigger:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 1px #3b82f6;
+}
+
+.select-content {
+  margin-top: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.select-group {
+  padding: 0.5rem 1rem;
+}
+
+.select-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.select-item {
+  padding: 0.5rem 1rem;
+  color: #1f2937;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.select-item:hover {
+  background-color: #f3f4f6;
+}
+
+.select-item:focus {
+  background-color: #e5e7eb;
+}
+
+.select-separator {
+  margin: 0.5rem 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+.tabs-demo {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tabs-title {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  color: #333;
+}
+
+.tabs-list {
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid #e5e5e5;
+  margin-bottom: 1.5rem;
+}
+
+.tabs-trigger {
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #555;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color 0.3s, border-bottom 0.3s;
+}
+
+.tabs-trigger:hover {
+  color: #0070f3;
+}
+
+.tabs-trigger[data-state="active"] {
+  color: #0070f3;
+  border-bottom-color: #0070f3;
+}
+
+.tabs-content {
+  padding: 1rem;
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+
+/* Input Styles */
+.input-wrapper {
+  width: 60vw; /* Set width relative to viewport */
+  max-width: 400px; /* Optional: Set a maximum width */
+  margin: 0 auto; /* Center the input horizontally */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.relative {
+  position: relative;
+}
+
+.input-label {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  background-color: white;
+  padding: 0 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #a8aeaf; /* gray */
+  transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease;
+  pointer-events: none;
+}
+
+.input-field {
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+  padding: 16px 16px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #5df2ff; /* blue */
+  background-color: white;
+  border: 1px solid #a8aeaf; /* gray */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-field:focus {
+  border-color: #0C78A7; /* blue */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.input-field:focus + .input-label,
+.input-field:not(:placeholder-shown) + .input-label {
+  top: 0;
+  font-size: 12px;
+  color: #0C78A7; /* blue */
+}
+
+.input-field-error {
+  border-color: #a20d00; /* red */
+}
+
+.input-error {
+  font-size: 12px;
+  color: #a20d00; /* red */
+  margin-top: 4px;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 80vw;
+  max-width: 500px;
+  z-index: 1001;
+  animation: slideUp 0.3s ease;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 500;
+  color: #5df2ff; /* blue */
+  border-bottom: 1px solid #a8aeaf; /* gray */
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.modal-close-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  line-height: 1;
+  color: #a8aeaf; /* gray */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.modal-close-button:hover {
+  color: #5df2ff; /* blue */
+}
+
+.modal-body {
+  font-size: 16px;
+  color: #a8aeaf; /* gray */
+  margin-bottom: 20px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Button Styles */
+.btn-primary {
+  background-color: #0C78A7; /* blue */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #118878; /* green */
+  transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Tooltip Styles */
+.tooltip-content {
+  @apply bg-black text-white text-sm rounded-md p-2 shadow-lg;
+}
+
+/* Accordion Styles */
+.accordion {
+  width: 80vw; /* Set a fixed yet responsive width based on viewport width */
+  max-width: 800px; /* Optional: Set a maximum width */
+  margin: 0 auto; /* Center the accordion horizontally */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.accordion-item {
+  border-bottom: 1px solid #ddd;
+}
+
+.accordion-item:last-child {
+  border-bottom: none;
+}
+
+.accordion-header {
+  display: flex;
+}
+
+.accordion-trigger {
+  background: #fff;
+  border: none;
+  padding: 16px;
+  width: 100%;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.accordion-trigger:hover {
+  background: #f9f9f9;
+}
+
+.accordion-chevron {
+  transition: transform 0.2s ease-in-out;
+}
+
+[aria-expanded="true"] > .accordion-chevron {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  background: #f9f9f9;
+  padding: 16px;
+  transition: background 0.3s;
+}
+
+.accordion-content-text {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Dark Mode Styles */
+body.dark-mode .accordion {
+  border-color: #444;
+}
+
+body.dark-mode .accordion-item {
+  border-bottom-color: #444;
+}
+
+body.dark-mode .accordion-trigger {
+  background: #374151;
+  color: #e5e7eb;
+}
+
+body.dark-mode .accordion-trigger:hover {
+  background: #4b5563;
+}
+
+body.dark-mode .accordion-content {
+  background: #1f2937;
+}
+
+body.dark-mode .accordion-content-text {
+  color: #d1d5db;
+}
+
+
+/* Notification Styles */
+.notification {
+  @apply fixed bottom-4 right-4 bg-white shadow-lg rounded-lg p-4 flex items-center space-x-4;
+}
+
+.notification-success {
+  @apply border-l-4 border-green-500;
+}
+
+.notification-error {
+  @apply border-l-4 border-red-500;
+}
+
+.notification-warning {
+  @apply border-l-4 border-yellow-500;
+}
+
+.notification-info {
+  @apply border-l-4 border-blue-500;
+}
+
+`} />
+
+</FlexGroup>
+
+<FlexGroup>
+
+<Step index={3}>Tailwind Config</Step>
+
+Now that we have added all our CSS variables to our `global.css` file, we need to update our Tailwind configuration.
+
+Copy and paste the following code into your `tailwind.config.js` file.
+
+<CodeBlock code={`const { fontFamily } = require('tailwindcss/defaultTheme')
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: 'class',
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    container: {
+      center: true,
+      padding: '2rem',
+      screens: {
+        '2xl': '1400px',
+      },
+    },
+    screens: {
+      lg: '900px',
+    },
+    extend: {
+      fontFamily: {
+        sans: ['var(--font-sans)', ...fontFamily.sans],
+        satoshi: ['satoshi'],
+      },
+      colors: {
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
+        },
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
+        },
+      },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
+      },
+      keyframes: {
+        'accordion-down': {
+          from: { height: 0 },
+          to: { height: 'var(--radix-accordion-content-height)' },
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: 0 },
+        },
+        'slide-from-left': {
+          '0%': {
+            transform: 'translateX(-100%)',
+          },
+          '100%': {
+            transform: 'translateX(0)',
+          },
+        },
+        'slide-to-left': {
+          '0%': {
+            transform: 'translateX(0)',
+          },
+          '100%': {
+            transform: 'translateX(-100%)',
+          },
+        },
+      },
+      animation: {
+        'slide-from-left':
+          'slide-from-left 0.3s cubic-bezier(0.82, 0.085, 0.395, 0.895)',
+        'slide-to-left':
+          'slide-to-left 0.25s cubic-bezier(0.82, 0.085, 0.395, 0.895)',
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+      },
+    },
+  },
+  plugins: [],
+}
+`} />
+
+<ExternalLink
+    href='https://tailwindcss.com/docs/configuration'
+    title='Tailwind Configuration Documentation'
+/>
+
+</FlexGroup>
+
+<FlexGroup>
+
+<Step index={4}>Classname Helper Function Dependencies</Step>
+
+The bulk of our components lean on a `cn` helper function to mash classnames together. This lets us slap styles 
+straight onto the core component while layering on extra flair wherever we deploy that component. 
+Install the following dependencies:
+
+<CodeBlock
+    code={`npm i --class-variance-authority --tailwind-merge --clsx`}
+/>
+
+</FlexGroup>
+
+<FlexGroup>
+
+### Class Variance Authority
+
+The Class Variance Authority, or `cva`, is your tool for managing component style variants with the ease. With 
+the `cva` function, you can tack on a variety of style variants to your base component. This method lets you 
+use different styles on your components wherever they're needed, streamlining your workflow and making your 
+design tight and consistent.
+
+<ExternalLink href='https://cva.style/docs' title='CVA Documentation' />
+
+    When diving into the world of `cva` with Tailwind CSS, there are some extra steps you can take to get
+    the most from `cva`: Enable autocompletion within `cva` for a smoother ride.
+
+<ExternalLink
+    href='https://cva.style/docs/getting-started/installation'
+    title='CVA IntelliSense Documentation'
+/>
+
+</FlexGroup>
+
+<FlexGroup>
+
+### Tailwind Merge
+
+    Tailwind Merge is a sleek utility that slices through the tangled web of Tailwind CSS classes in your 
+    JavaScript, ensuring you sidestep those pesky style conflicts. It's the sharp tool in the kit, making your 
+    styling operations easy peasy.
+
+<ExternalLink href='https://www.npmjs.com/package/tailwind-merge' title='Tailwind Merge' />
+
+</FlexGroup>
+
+<FlexGroup>
+
+### clsx
+
+A little (234B) dynamo for piecing together `className` strings on a conditional basis.
+
+<ExternalLink href='https://github.com/lukeed/clsx' title='clsx Documentation' />
+
+</FlexGroup>
+
+<FlexGroup>
+
+<Step index={5}>Classname Helper Function</Step>
+
+    Now that we've got all the essential dependencies squared away, it's time to set 
+    up the `cn` helper function.
+
+    Head over to your `lib` folder and drop this code into your `utils.ts` file.
+
+<CodeBlock code={`import { clsx, type ClassValue } from 'clsx'
+import { twMerge } from 'tailwind-merge'
+
+export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs))
+}`} />
+
+</FlexGroup>
+
+<FlexGroup>
+
+<Step index={6}>Lucid Icons</Step>
+
+Certain components in this system lean on Lucid Icons. But remember, it's your code, your rules. You're free 
+to swap in any icon library that suits your taste. If you fancy the seamless integration of Lucid's icons right 
+from the get-go, just install this dependency:
+<CodeBlock code={`npm install lucide-react`} />
+
+<ExternalLink href='https://lucide.dev/guide/packages/lucide-react' title='Lucid Icons Documentation' />
+
+</FlexGroup>
+
+### Optional Installs
+
+<FlexGroup>
+
+#### Automatic Class Sorting with Prettier
+
+A plugin for Tailwind CSS that grabs your Tailwind classes, lines them up, and sorts them with precision, 
+adhering strictly to the recommended class order. No more chaos, no more guesswork, ensuring every class 
+is exactly where it should be. Clean and efficient.
+
+<ExternalLink
+href='https://github.com/tailwindlabs/prettier-plugin-tailwindcss'
+title='Prettier Tailwind Plugin Documentation'
+/>
+
+</FlexGroup>
+
+{/* <Installation /> */}

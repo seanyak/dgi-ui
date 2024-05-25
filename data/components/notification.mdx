@@ -1,0 +1,67 @@
+---
+metaTitle: Notification - Homeschool Network UI
+metaDescription: A notification component for displaying alerts and messages.
+name: Notification
+---
+
+<FlexGroup>
+  # Notification
+
+  <Description
+    hasRadixLink={false}
+  >
+    A notification component for displaying alerts and messages.
+  </Description>
+</FlexGroup>
+
+<PreviewComponent
+  componentName='Notification'
+  demoComponent={<NotificationDemo />}
+  demoCodePath='NotificationDemo'
+/>
+
+<FlexGroup>
+  ## Installation
+
+Copy and paste the following code into your project.
+
+<ComponentSource code='Notification' />
+
+Update the import paths to match your project setup.
+
+## Anatomy
+
+Import all parts and piece them together.
+
+<CodeBlock code={`import Notification from "@/components/ui/notification"`} />
+
+<CodeBlock
+  code={`<Notification type="success" message="Sample message" />`}
+/>
+</FlexGroup>
+
+<FlexGroup>
+## Props
+
+### Type
+
+<NotificationProps
+  variantName='type'
+  variantProps={['info', 'success', 'warning', 'error']}
+/>
+
+### Duration
+
+<NotificationProps
+  variantName='duration'
+  variantProps={['number']}
+/>
+
+### Message
+
+<NotificationProps
+  variantName='message'
+  variantProps={['string']}
+/>
+
+</FlexGroup>

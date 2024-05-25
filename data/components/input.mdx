@@ -1,0 +1,72 @@
+---
+metaTitle: Input - Homeschool Network UI
+metaDescription: A flexible input component for text, number, password, and other input types.
+name: Input
+---
+
+<FlexGroup>
+  # Input
+
+  <Description
+    hasRadixLink={false}
+  >
+    A flexible input component for text, number, password, and other input types.
+  </Description>
+</FlexGroup>
+
+<PreviewComponent
+  componentName='Input'
+  demoComponent={<InputDemo />}
+  demoCodePath='InputDemo'
+/>
+
+<FlexGroup>
+  ## Installation
+
+Copy and paste the following code into your project.
+
+<ComponentSource code='Input' />
+
+Update the import paths to match your project setup.
+
+## Anatomy
+
+Import all parts and piece them together.
+
+<CodeBlock code={`import Input from "@/components/ui/input"`} />
+
+<CodeBlock
+  code={`<Input type="text" value="Sample text" onChange={() => {}} />`}
+/>
+</FlexGroup>
+
+<FlexGroup>
+## Props
+
+### Type
+
+<InputProps
+  variantName='type'
+  variantProps={[
+    'text',
+    'number',
+    'password',
+    'email',
+  ]}
+/>
+
+### Size
+
+<InputProps
+  variantName='size'
+  variantProps={['default', 'small', 'large']}
+/>
+
+### Error
+
+<InputProps
+  variantName='error'
+  variantProps={['true', 'false']}
+/>
+
+</FlexGroup>

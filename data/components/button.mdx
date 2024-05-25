@@ -1,0 +1,67 @@
+---
+metaTitle: Button - Homeschool Network UI
+metaDescription: Displays a button or a component that looks like a button.
+name: Button
+---
+
+<FlexGroup>
+  # Button
+
+  <Description
+    hasRadixLink={false}
+  >
+    Displays a button or a component that looks like a button.
+  </Description>
+</FlexGroup>
+
+<PreviewComponent
+  componentName='Button'
+  demoComponent={<ButtonDemo />}
+  demoCodePath='ButtonDemo'
+/>
+
+<FlexGroup>
+  ## Installation
+
+Copy and paste the following code into your project.
+
+<ComponentSource code='Button' />
+
+Update the import paths to match your project setup.
+
+## Anatomy
+
+Import all parts and piece them together.
+
+<CodeBlock code={`import { buttonVariants } from "@/components/ui/button"`} />
+
+<CodeBlock
+  code={`<Button className={buttonVariants({ variant: "outline" })}>Click here</Button>`}
+/>
+</FlexGroup>
+
+<FlexGroup>
+## Props
+
+### Variant
+
+<ButtonProps
+  variantName='variant'
+  variantProps={[
+    'default',
+    'secondary',
+    'outline',
+    'ghost',
+    'link',
+    'destructive',
+  ]}
+/>
+
+### Size
+
+<ButtonProps
+  variantName='size'
+  variantProps={['default', 'xs', 'sm', 'lg', 'xl']}
+/>
+
+</FlexGroup>

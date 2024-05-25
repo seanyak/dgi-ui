@@ -1,0 +1,60 @@
+---
+metaTitle: Card - Homeschool Network UI
+metaDescription: A card component for displaying grouped content.
+name: Card
+---
+
+<FlexGroup>
+  # Card
+
+  <Description
+    hasRadixLink={false}
+  >
+    A card component for displaying grouped content.
+  </Description>
+</FlexGroup>
+
+<PreviewComponent
+  componentName='Card'
+  demoComponent={<CardDemo />}
+  demoCodePath='CardDemo'
+/>
+
+<FlexGroup>
+  ## Installation
+
+Copy and paste the following code into your project.
+
+<ComponentSource code='Card' />
+
+Update the import paths to match your project setup.
+
+## Anatomy
+
+Import all parts and piece them together.
+
+<CodeBlock code={`import Card from "@/components/ui/card"`} />
+
+<CodeBlock
+  code={`<Card title="Sample Title" image="sample.jpg">Content here</Card>`}
+/>
+</FlexGroup>
+
+<FlexGroup>
+## Props
+
+### Title
+
+<CardProps
+  variantName='title'
+  variantProps={['string']}
+/>
+
+### Image
+
+<CardProps
+  variantName='image'
+  variantProps={['string']}
+/>
+
+</FlexGroup>

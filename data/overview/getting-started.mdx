@@ -1,0 +1,157 @@
+---
+metaTitle: Getting Started - DGI-UI
+metaDescription: A quick tutorial to get you up and running with DGI-UI.
+---
+
+<FlexGroup>
+
+    # Getting Started
+    <Description>
+        A quick tutorial to get you up and running with DGI-UI.
+    </Description>
+
+</FlexGroup>
+
+<FlexGroup>
+
+    ## Building Your UI Library
+
+    After installation, you're set to start crafting your UI library. 
+
+    Now, you've got two options:
+
+    1. Grab the whole shebang of components and dump them into your project.
+    2. Cherry-pick the specific pieces you need and drop them in manually.
+
+</FlexGroup>
+
+<FlexGroup>
+
+    ## Downloading All Components
+
+    If you’re kicking off a new project and crave a full, dazzling array of UI delights, snagging the whole UI library is your ultimate move.
+
+    Grab the components/UI folder right onto your computer.
+
+    <DownloadUiButton />
+
+    Once you've got it, unzip the file, then  drag and drop it straight into your project's components folder.
+
+    <NextImage alt='desktop screen recording showing a components folder dragged into VS code' src='/images/dgiui_start.gif' />
+
+    Don't forget to glance at the docs for each component as you use them.
+
+</FlexGroup>
+
+<FlexGroup>
+
+    ## Manually Adding Components
+
+    Adding components manually, as needed, is a brilliant strategy for maintaining a sleek, minimal UI, 
+    stripped of excess. This approach guarantees your interface remains streamlined and cohesive, adorned 
+    only with the essentials that harmonize with your project's aesthetic.
+
+</FlexGroup>
+
+<FlexGroup>
+
+    <Step index={1}>Craft your UI components folder</Step>
+
+    Create a components folder with a UI subfolder.
+
+    Here's a tried-and-true method for structuring components:
+
+    <CodeBlock
+    code={`├── app
+│   ├── layout.tsx
+│   └── page.tsx
+├── components
+│   ├── ui
+│   │   ├── accordion.tsx
+│   │   ├── badge.tsx
+│   │   ├── button.tsx
+│   │   └── ...
+│   ├── codeBlock.tsx
+│   ├── community.tsx
+│   └── ...
+├── lib
+│   └── utils.ts
+├── styles
+│   └── globals.css
+├── next.config.js
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+└── tsconfig.json`}
+    />
+
+</FlexGroup>
+
+<FlexGroup>
+
+    <Step index={2}>Select which component you would like to use</Step>
+
+    In this example we will be adding the <NextLink href='/docs/components/modal'>Modal</NextLink> component.
+
+</FlexGroup>
+
+<FlexGroup>
+
+    <Step index={3}>
+        Create a new file inside your components/ui folder
+    </Step>
+
+    Let's name it `modal.tsx`
+
+</FlexGroup>
+
+<FlexGroup>
+    <Step index={4}>
+        Follow the installation process for the specific component.
+    </Step>
+
+    To get started with the Modal component, install the necessary dependencies.
+
+    <CodeBlock code={`npm install @radix-ui/react-dialog`} />
+
+    Now, take that provided code and place it into your `modal.tsx` file.
+
+    <CodeBlock code={`import React from 'react';
+import * as Dialog from '@radix-ui/react-dialog';
+
+interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  title: string;
+  children: React.ReactNode;
+}
+
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => (
+  <Dialog.Root open={isOpen} onOpenChange={onClose}>
+    <Dialog.Overlay className="modal-overlay" />
+    <Dialog.Content className="modal">
+      <Dialog.Title className="modal-header">
+        {title}
+        <Dialog.Close asChild>
+          <button onClick={onClose} className="modal-close-button">&times;</button>
+        </Dialog.Close>
+      </Dialog.Title>
+      <Dialog.Description className="modal-body">
+        {children}
+      </Dialog.Description>
+      <div className="modal-footer">
+        <Dialog.Close asChild>
+          <button onClick={onClose} className="btn-primary mr-7">Close</button>
+        </Dialog.Close>
+      </div>
+    </Dialog.Content>
+  </Dialog.Root>
+);
+
+export default Modal;
+`} />
+
+    Now, the final step is to align the import paths with your project's configuration.
+
+</FlexGroup>
+

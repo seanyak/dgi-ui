@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import * as React from 'react';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import { cva, type VariantProps } from 'class-variance-authority';
@@ -37,6 +37,8 @@ const Tabs = React.forwardRef<
   );
 });
 
+Tabs.displayName = 'Tabs'; // Add display name for better debugging
+
 // Define TabsList component using Radix UI's TabsPrimitive.List
 const TabsList = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
@@ -50,6 +52,8 @@ const TabsList = React.forwardRef<
     />
   );
 });
+
+TabsList.displayName = 'TabsList'; // Add display name for better debugging
 
 // Define TabsTrigger component with style variants and Radix UI's TabsPrimitive.Trigger
 interface TabsTriggerProps
@@ -69,6 +73,8 @@ const TabsTrigger = React.forwardRef<
   );
 });
 
+TabsTrigger.displayName = 'TabsTrigger'; // Add display name for better debugging
+
 // Define TabsContent component using Radix UI's TabsPrimitive.Content
 const TabsContent = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Content>,
@@ -84,5 +90,7 @@ const TabsContent = React.forwardRef<
     </TabsPrimitive.Content>
   );
 });
+
+TabsContent.displayName = 'TabsContent'; // Add display name for better debugging
 
 export { Tabs, TabsList, TabsTrigger, TabsContent };

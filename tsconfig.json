@@ -1,26 +1,33 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "module": "esnext",
+    "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "downlevelIteration": true, // Enable downlevelIteration
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./*"
+      ]
     }
   },
   "include": [
@@ -38,7 +45,11 @@
     "lib/fetchComponentSource.ts",
     "lib/syncComponentFiles.ts",
     "lib/generateZip.ts",
-    "app/api/download-components/route.ts"
-, "lib/fetchUIFolderData.ts", "data/components/modal.mdx"  ],
-  "exclude": ["node_modules"]
+    "app/api/download-components/route.ts",
+    "lib/fetchUIFolderData.ts",
+    "data/components/modal.mdx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

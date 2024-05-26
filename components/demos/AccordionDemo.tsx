@@ -4,7 +4,7 @@ import React from 'react';
 import * as Accordion from '@radix-ui/react-accordion';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 
-const AccordionDemo = () => (
+const AccordionDemo: React.FC = () => (
   <Accordion.Root className="AccordionRoot" type="single" defaultValue="item-1" collapsible>
     {/* Accordion root element that holds all accordion items. 
         type="single" ensures only one item can be open at a time.
@@ -60,6 +60,8 @@ const AccordionTrigger = React.forwardRef<HTMLButtonElement, AccordionTriggerPro
   )
 );
 
+AccordionTrigger.displayName = 'AccordionTrigger'; // Add display name for better debugging
+
 // Defining the interface for the AccordionContent component's props.
 interface AccordionContentProps extends React.ComponentPropsWithoutRef<typeof Accordion.Content> {
   children: React.ReactNode;
@@ -78,6 +80,8 @@ const AccordionContent = React.forwardRef<HTMLDivElement, AccordionContentProps>
     </Accordion.Content>
   )
 );
+
+AccordionContent.displayName = 'AccordionContent'; // Add display name for better debugging
 
 // Exporting AccordionDemo component as the default export.
 export default AccordionDemo;

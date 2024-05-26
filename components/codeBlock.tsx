@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react'
 import Prism from 'prismjs'
-import 'app/Prism.css'
+import '@/app/prism.css'
 import 'prismjs/components/prism-typescript'
 import CopyToClipboard from './ui/copyToClipboard'
 

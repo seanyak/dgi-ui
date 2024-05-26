@@ -1,23 +1,20 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '../ui/tabs'
-import CodeBlock from '../codeBlock'
-import { Button } from '../ui/button'
-import { Badge } from '../ui/badge'
-import { Expand } from 'lucide-react'
+import React, { useState } from 'react';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '../ui/tabs';
+import CodeBlock from '../codeBlock';
+import { Badge } from '../ui/badge';
 
 type ExampleComponentProps = {
-  variantName: 'size' | 'fill' | 'shape' | 'coloring' | 'separation'
-  variantProps: string[]
-}
+  variantName: 'size' | 'fill' | 'shape' | 'coloring' | 'separation';
+  variantProps: string[];
+};
 
-type SizeProps = 'default' | 'sm' | 'lg' | 'xl' | null | undefined
+type SizeProps = 'default' | 'sm' | 'lg' | 'xl' | null | undefined;
 
-type FillProps = 'solid' | 'muted' | null | undefined
+type FillProps = 'solid' | 'muted' | null | undefined;
 
-type ShapeProps = 'square' | 'rounded' | 'pill' | null | undefined
+type ShapeProps = 'square' | 'rounded' | 'pill' | null | undefined;
 
 type ColoringProps =
   | 'default'
@@ -29,59 +26,52 @@ type ColoringProps =
   | 'purple'
   | 'red'
   | null
-  | undefined
+  | undefined;
 
-type SeparationProps = 'none' | 'outline' | 'shadow' | null | undefined
+type SeparationProps = 'none' | 'outline' | 'shadow' | null | undefined;
 
-export default function BadgeProps({
+const BadgeProps: React.FC<ExampleComponentProps> = ({
   variantName,
   variantProps,
-}: ExampleComponentProps) {
-  const [activeProp, setActiveProp] = useState(variantProps[0])
+}) => {
+  const [activeProp, setActiveProp] = useState(variantProps[0]);
 
-  const [activeSizeProp, setActiveSizeProp] = useState<SizeProps>('default')
-  const [activeFillProp, setActiveFillProp] = useState<FillProps>('solid')
-  const [activeShapeProp, setActiveShapeProp] = useState<ShapeProps>('square')
-  const [activeColoringProp, setActiveColoringProp] =
-    useState<ColoringProps>('default')
-  const [activeSeparationProp, setActiveSeparationProp] =
-    useState<SeparationProps>('none')
+  const [activeSizeProp, setActiveSizeProp] = useState<SizeProps>('default');
+  const [activeFillProp, setActiveFillProp] = useState<FillProps>('solid');
+  const [activeShapeProp, setActiveShapeProp] = useState<ShapeProps>('square');
+  const [activeColoringProp, setActiveColoringProp] = useState<ColoringProps>('default');
+  const [activeSeparationProp, setActiveSeparationProp] = useState<SeparationProps>('none');
 
   function handleActiveProp(prop: any) {
-    setActiveProp(prop)
+    setActiveProp(prop);
     if (variantName === 'size') {
-      setActiveSizeProp(prop)
+      setActiveSizeProp(prop);
     } else if (variantName === 'fill') {
-      setActiveFillProp(prop)
+      setActiveFillProp(prop);
     } else if (variantName === 'shape') {
-      setActiveShapeProp(prop)
+      setActiveShapeProp(prop);
     } else if (variantName === 'coloring') {
-      setActiveColoringProp(prop)
+      setActiveColoringProp(prop);
     } else {
-      setActiveSeparationProp(prop)
+      setActiveSeparationProp(prop);
     }
   }
 
   return (
     <div className=''>
-      <Tabs
-        defaultValue={variantProps[0]}
-        orientation='vertical'
-        className='bg-background'
-      >
+      <Tabs defaultValue={variantProps[0]} orientation='vertical' className='bg-background'>
         <TabsList aria-label='tabs example' className='border-none'>
-          {variantProps.map((prop) => {
-            return (
-              <TabsTrigger
-                value={prop}
-                asChild
-                className='text-xs'
-                variant='button'
-              >
-                <button onClick={() => handleActiveProp(prop)}>{prop}</button>
-              </TabsTrigger>
-            )
-          })}
+          {variantProps.map((prop) => (
+            <TabsTrigger
+              key={prop} // Add key prop
+              value={prop}
+              asChild
+              className='text-xs'
+              variant='button'
+            >
+              <button onClick={() => handleActiveProp(prop)}>{prop}</button>
+            </TabsTrigger>
+          ))}
         </TabsList>
 
         <div className='relative overflow-hidden rounded-lg border border-border'>
@@ -96,8 +86,7 @@ export default function BadgeProps({
               <Badge shape={activeShapeProp}>{activeShapeProp}</Badge>
             ) : variantName === 'coloring' ? (
               <Badge coloring={activeColoringProp}>{activeColoringProp}</Badge>
-            ) : variantName === 'separation' &&
-              activeSeparationProp === 'outline' ? (
+            ) : variantName === 'separation' && activeSeparationProp === 'outline' ? (
               <div className='relative flex w-full justify-center'>
                 <Badge className='z-10' separation={activeSeparationProp}>
                   {activeSeparationProp}
@@ -113,21 +102,27 @@ export default function BadgeProps({
             )}
           </div>
 
-          {variantProps.map((prop) => {
-            return (
-              <TabsContent value={prop} className='border-t border-border'>
-                <CodeBlock
-                  code={
-                    prop === 'default'
-                      ? `<Badge>${activeProp}</Badge>`
-                      : `<Badge ${variantName}='${prop}'>${prop}</Badge>`
-                  }
-                />
-              </TabsContent>
-            )
-          })}
+          {variantProps.map((prop) => (
+            <TabsContent
+              key={prop} // Add key prop
+              value={prop}
+              className='border-t border-border'
+            >
+              <CodeBlock
+                code={
+                  prop === 'default'
+                    ? `<Badge>${activeProp}</Badge>`
+                    : `<Badge ${variantName}='${prop}'>${prop}</Badge>`
+                }
+              />
+            </TabsContent>
+          ))}
         </div>
       </Tabs>
     </div>
-  )
-}
+  );
+};
+
+BadgeProps.displayName = 'BadgeProps'; // Add a display name for debugging
+
+export default BadgeProps;

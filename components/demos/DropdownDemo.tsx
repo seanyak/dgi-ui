@@ -4,7 +4,7 @@ import React from 'react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 
-const DropdownDemo = () => (
+const DropdownDemo: React.FC = () => (
   <DropdownMenu.Root>
     <DropdownMenu.Trigger className="dropdown-menu-trigger">
       Homeschooling Resources
@@ -24,11 +24,13 @@ const DropdownDemo = () => (
   </DropdownMenu.Root>
 );
 
+// Defining the interface for the DropdownMenuItem component's props.
 interface DropdownMenuItemProps extends React.ComponentPropsWithoutRef<typeof DropdownMenu.Item> {
   children: React.ReactNode;
   className?: string;
 }
 
+// The DropdownMenuItem component that represents each item in the dropdown menu.
 const DropdownMenuItem = React.forwardRef<HTMLDivElement, DropdownMenuItemProps>(
   ({ children, className, ...props }, forwardedRef) => (
     <DropdownMenu.Item
@@ -40,5 +42,9 @@ const DropdownMenuItem = React.forwardRef<HTMLDivElement, DropdownMenuItemProps>
     </DropdownMenu.Item>
   )
 );
+
+DropdownMenuItem.displayName = 'DropdownMenuItem'; // Add display name for better debugging
+
+DropdownDemo.displayName = 'DropdownDemo'; // Add display name for better debugging
 
 export default DropdownDemo;

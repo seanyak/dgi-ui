@@ -1,26 +1,22 @@
-'use client'
+'use client';
 
-import React, { useState, useEffect } from 'react'
-import { usePathname } from 'next/navigation'
+import React, { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
-import GlobalNav from '@/components/globalNav'
-import { RemoveScroll } from 'react-remove-scroll'
+import GlobalNav from '@/components/globalNav';
+import { RemoveScroll } from 'react-remove-scroll';
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/utils';
 
-export default function DocsLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  const [mobileNavOpen, setMobileNavOpen] = useState(false)
-  const pathname = usePathname()
+export default function DocsLayout({ children }: { children: React.ReactNode }) {
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     if (mobileNavOpen) {
-      setMobileNavOpen(!mobileNavOpen)
+      setMobileNavOpen((prev) => !prev); // Functional update to handle the previous state
     }
-  }, [pathname])
+  }, [pathname]);
 
   return (
     <main className={cn('flex h-screen flex-col')}>
@@ -28,9 +24,9 @@ export default function DocsLayout({
         mobileNavOpen={mobileNavOpen}
         setMobileNavOpen={setMobileNavOpen}
       />
-      <RemoveScroll enabled={mobileNavOpen ? true : false} noIsolation={true}>
+      <RemoveScroll enabled={mobileNavOpen} noIsolation={true}>
         {children}
       </RemoveScroll>
     </main>
-  )
+  );
 }

@@ -1,19 +1,19 @@
-'use client'
+'use client';
 
-import React, { useEffect } from 'react'
-import Prism from 'prismjs'
-import '@/app/prism.css'
-import 'prismjs/components/prism-typescript'
-import CopyToClipboard from './ui/copyToClipboard'
+import React, { useEffect } from 'react';
+import Prism from 'prismjs';
+import '@/app/prism.css';
+import 'prismjs/components/prism-typescript';
+import CopyToClipboard from './ui/copyToClipboard';
 
 interface CodeBlockProps {
-  code: string
+  code: string;
 }
 
 export default function CodeBlock({ code }: CodeBlockProps) {
   useEffect(() => {
-    Prism.highlightAll()
-  }, [])
+    Prism.highlightAll();
+  }, []);
 
   return (
     <div className='relative'>
@@ -24,5 +24,5 @@ export default function CodeBlock({ code }: CodeBlockProps) {
         <CopyToClipboard value={code} coloring='dark' />
       </div>
     </div>
-  )
+  );
 }

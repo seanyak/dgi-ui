@@ -1,33 +1,23 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "downlevelIteration": true, // Enable downlevelIteration
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    "target": "es5", // Set the target ECMAScript version
+    "lib": ["dom", "dom.iterable", "esnext"], // Include necessary libraries
+    "allowJs": true, // Allow JavaScript files
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "strict": true, // Enable all strict type-checking options
+    "forceConsistentCasingInFileNames": true, // Ensure consistent casing in file names
+    "noEmit": true, // Do not emit outputs
+    "esModuleInterop": true, // Enable interoperability between CommonJS and ES Modules
+    "module": "commonjs", // Set module system
+    "moduleResolution": "node", // Use Node module resolution
+    "resolveJsonModule": true, // Allow importing JSON files
+    "isolatedModules": true, // Ensure each file can be safely transpiled without relying on other files
+    "jsx": "preserve", // Preserve JSX syntax for Next.js to handle
+    "incremental": true, // Enable incremental compilation
+    "downlevelIteration": true, // Enable downlevelIteration for compatibility
+    "plugins": [{ "name": "next" }], // Use Next.js TypeScript plugin
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"] // Configure module resolution paths
     }
   },
   "include": [
@@ -49,7 +39,5 @@
     "lib/fetchUIFolderData.ts",
     "data/components/modal.mdx"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules", "**/*.d.ts"] // Exclude node_modules and type declaration files
 }

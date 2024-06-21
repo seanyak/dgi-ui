@@ -1,12 +1,30 @@
-import DownloadUiButtonClient from './downloadUIButtonClient'
-import { fetchUIFolderData } from '@/lib/fetchUIFolderData'
+'use client';
 
-export default function DownloadUiBUtton() {
-  const data = fetchUIFolderData()
+import React, { useState, useEffect } from 'react';
+
+const DownloadUiButton: React.FC = () => {
+  const [folderData, setFolderData] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchFolderData = async () => {
+      const response = await fetch('/api/fetch-ui-folder-data?path=your-folder-path');
+      const data = await response.json();
+      setFolderData(data);
+    };
+
+    fetchFolderData();
+  }, []);
+
+  if (!folderData) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <DownloadUiButtonClient fileData={data}>
-      Download Components
-    </DownloadUiButtonClient>
-  )
-}
+    <button>
+      {/* Render button content here using folderData */}
+      Download UI Data
+    </button>
+  );
+};
+
+export default DownloadUiButton;

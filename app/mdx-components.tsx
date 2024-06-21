@@ -1,8 +1,9 @@
+'use client';
+
 import type { MDXComponents } from 'mdx/types';
 import PreviewComponent from '@/components/previewComponent';
 import SelectDemo from '@/components/demos/SelectDemo';
 import PreviewCodeBlock from '@/components/previewCodeBlock';
-import ComponentSource from '@/components/componentSource';
 import CodeBlock from '@/components/codeBlock';
 import BadgeDemo from '@/components/demos/BadgeDemo';
 import { Button } from '@/components/ui/button';
@@ -68,7 +69,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     SelectDemo,
     PreviewCodeBlock,
     CodeBlock,
-    ComponentSource,
     BadgeDemo,
     ButtonDemo,
     TabsDemo,

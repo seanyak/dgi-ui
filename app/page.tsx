@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <main>
-      <div>Home Page</div>
+      <div>dgiUI</div>
     </main>
   )
 }

@@ -1,5 +1,3 @@
-'use client';
-
 import type { MDXComponents } from 'mdx/types';
 import PreviewComponent from '@/components/previewComponent';
 import SelectDemo from '@/components/demos/SelectDemo';
@@ -38,6 +36,8 @@ import TooltipProps from '@/components/componentProps/TooltipProps';
 import AccordionProps from '@/components/componentProps/AccordionProps';
 import NotificationProps from '@/components/componentProps/NotificationProps';
 
+import ComponentSource from '@/components/componentSource'; // Ensure this import
+
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     Wrapper: ({ children }) => (
@@ -64,16 +64,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     strong: ({ children }) => (
       <strong className='font-semibold'>{children}</strong>
     ),
-    Description,
     PreviewComponent,
-    SelectDemo,
     PreviewCodeBlock,
     CodeBlock,
-    BadgeDemo,
-    ButtonDemo,
-    TabsDemo,
     Button,
-    CollapsibleDemo,
+    Description,
     FlexGroup,
     DownloadUiButton,
     NextImage,
@@ -81,23 +76,29 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     NextLink,
     ExternalLink,
     Community,
+    AccordionProps,
     ButtonProps,
     BadgeProps,
-    TabsProps,
-    CardDemo,
-    DropdownDemo,
-    InputDemo,
-    ModalDemo,
-    TooltipDemo,
-    AccordionDemo,
-    NotificationDemo,
     CardProps,
     DropdownProps,
     InputProps,
     ModalProps,
-    TooltipProps,
-    AccordionProps,
     NotificationProps,
+    TabsProps,
+    TooltipProps,
+    AccordionDemo,
+    BadgeDemo,
+    ButtonDemo,
+    CardDemo,
+    CollapsibleDemo,
+    DropdownDemo,
+    InputDemo,
+    ModalDemo,
+    NotificationDemo,
+    SelectDemo,
+    TabsDemo,
+    TooltipDemo,
+    ComponentSource, // Ensure this is included
     ...components,
   };
 }

@@ -1,8 +1,8 @@
-import { fetchComponentCode } from '@/lib/fetchComponentSource'
-import CodeBlock from './codeBlock'
+import { fetchComponentSource } from '@/lib/fetchComponentSource'
+import CodeBlock from '@/components/codeBlock'
 
 export default function ComponentSource({ code }: { code: string }) {
-  const compCode = fetchComponentCode(code)
+  const compCode = fetchComponentSource(code)
   return (
     <div>
       <CodeBlock code={compCode} />

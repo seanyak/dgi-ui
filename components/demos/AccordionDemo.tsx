@@ -6,12 +6,6 @@ import { ChevronDownIcon } from '@radix-ui/react-icons';
 
 const AccordionDemo: React.FC = () => (
   <Accordion.Root className="AccordionRoot" type="single" defaultValue="item-1" collapsible>
-    {/* Accordion root element that holds all accordion items. 
-        type="single" ensures only one item can be open at a time.
-        defaultValue="item-1" sets the first item as open by default.
-        collapsible allows collapsing all items, including the currently open one. */}
-    
-    {/* Accordion item */}
     <Accordion.Item className="AccordionItem" value="item-1">
       <AccordionTrigger>Math Resources</AccordionTrigger>
       <AccordionContent>
@@ -19,7 +13,6 @@ const AccordionDemo: React.FC = () => (
       </AccordionContent>
     </Accordion.Item>
 
-    {/* Accordion item */}
     <Accordion.Item className="AccordionItem" value="item-2">
       <AccordionTrigger>Science Projects</AccordionTrigger>
       <AccordionContent>
@@ -27,7 +20,6 @@ const AccordionDemo: React.FC = () => (
       </AccordionContent>
     </Accordion.Item>
 
-    {/* Accordion item */}
     <Accordion.Item className="AccordionItem" value="item-3">
       <AccordionTrigger>History Lessons</AccordionTrigger>
       <AccordionContent>
@@ -37,51 +29,45 @@ const AccordionDemo: React.FC = () => (
   </Accordion.Root>
 );
 
-// Defining the interface for the AccordionTrigger component's props.
 interface AccordionTriggerProps extends React.ComponentPropsWithoutRef<typeof Accordion.Trigger> {
   children: React.ReactNode;
   className?: string;
 }
 
-// The AccordionTrigger component that acts as the clickable header to open or close the accordion item.
 const AccordionTrigger = React.forwardRef<HTMLButtonElement, AccordionTriggerProps>(
   ({ children, className, ...props }, forwardedRef) => (
     <Accordion.Header className="AccordionHeader">
       <Accordion.Trigger
-        className={`AccordionTrigger ${className || ''}`}
+        className={`AccordionTrigger ${className || ''} p-4 bg-gray-100 dark:bg-gray-800 dark:text-white`}
         {...props}
         ref={forwardedRef}
       >
         {children}
-        {/* ChevronDownIcon provides a visual cue to indicate the expandable nature of the accordion item. */}
         <ChevronDownIcon className="AccordionChevron" aria-hidden />
       </Accordion.Trigger>
     </Accordion.Header>
   )
 );
 
-AccordionTrigger.displayName = 'AccordionTrigger'; // Add display name for better debugging
+AccordionTrigger.displayName = 'AccordionTrigger';
 
-// Defining the interface for the AccordionContent component's props.
 interface AccordionContentProps extends React.ComponentPropsWithoutRef<typeof Accordion.Content> {
   children: React.ReactNode;
   className?: string;
 }
 
-// The AccordionContent component that contains the actual content of the accordion item.
 const AccordionContent = React.forwardRef<HTMLDivElement, AccordionContentProps>(
   ({ children, className, ...props }, forwardedRef) => (
     <Accordion.Content
-      className={`AccordionContent ${className || ''}`}
+      className={`AccordionContent ${className || ''} p-4 bg-gray-50 dark:bg-gray-700 dark:text-white`}
       {...props}
       ref={forwardedRef}
     >
-      <div className="AccordionContentText">{children}</div>
+      <div className="AccordionContentText  dark:text-white">{children}</div>
     </Accordion.Content>
   )
 );
 
-AccordionContent.displayName = 'AccordionContent'; // Add display name for better debugging
+AccordionContent.displayName = 'AccordionContent';
 
-// Exporting AccordionDemo component as the default export.
 export default AccordionDemo;

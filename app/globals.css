@@ -277,7 +277,7 @@
   padding: 16px 16px;
   font-size: 16px;
   line-height: 1.5;
-  color: #5df2ff; /* blue */
+  color: #061012; /* blue */
   background-color: white;
   border: 1px solid #a8aeaf; /* gray */
   border-radius: 8px;
@@ -337,7 +337,7 @@
   align-items: center;
   font-size: 20px;
   font-weight: 500;
-  color: #5df2ff; /* blue */
+  color: #061012; /* blue */
   border-bottom: 1px solid #a8aeaf; /* gray */
   padding-bottom: 10px;
   margin-bottom: 20px;
@@ -381,7 +381,7 @@
 }
 
 .btn-primary:hover {
-  background-color: #118878; /* green */
+  background-color: #3f85f4; /* green */
   transform: translateY(-2px);
 }
 

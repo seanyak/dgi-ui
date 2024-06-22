@@ -1,15 +1,15 @@
 'use client'
 
-import { Tabs, TabsList, TabsTrigger, TabsContent } from './ui/tabs'
-import CodeBlock from './codeBlock'
-import { Button } from './ui/button'
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
+import CodeBlock from '@/components/codeBlock'
+import { Button } from '@/components/ui/button'
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import {
   Collapsible,
   CollapsibleTrigger,
   CollapsibleContent,
-} from './ui/collapsible'
+} from '@/components/ui/collapsible'
 
 type PreviewCodeBlockProps = {
   componentName: string

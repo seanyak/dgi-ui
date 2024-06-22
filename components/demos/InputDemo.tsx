@@ -15,7 +15,7 @@ export default function InputDemo() {
         placeholder="Enter your name"
         className="input-primary"
         label="Student Name"
-        error={value.length < 5 ? "Name must be at least 5 characters" : ""}
+        error={value.length < 2 ? "Name must be at least 2 characters" : ""}
       />
     </div>
   );

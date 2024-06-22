@@ -24,7 +24,7 @@ const Notification: React.FC<NotificationProps> = ({ type = 'info', message, dur
 
   return (
     <Toast.Provider>
-      <Toast.Root className={`notification notification-${type}`} open={open} onOpenChange={setOpen}>
+      <Toast.Root className={`notification notification-${type} dark:text-black`} open={open} onOpenChange={setOpen}>
         <Toast.Title>{message}</Toast.Title>
         <Toast.Action asChild altText="Close">
           <button onClick={() => setOpen(false)}>&times;</button>

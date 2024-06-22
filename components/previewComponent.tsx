@@ -1,35 +1,36 @@
-'use client';
+import PreviewCodeBlock from '@/components/previewCodeBlock'
+import {
+  fetchDemoCode,
+  fetchGlobalsCode,
+  fetchTailwindCode,
+} from '@/lib/fetchComponentSource'
 
-import React, { useEffect, useState } from 'react';
-
-interface PreviewComponentProps {
-  componentPath: string;
+type PreviewComponentProps = {
+  componentName: string
+  demoComponent: React.ReactNode
+  demoCodePath: string
 }
 
-const PreviewComponent: React.FC<PreviewComponentProps> = ({ componentPath }) => {
-  const [source, setSource] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchSource = async () => {
-      const response = await fetch(`/api/fetch-component-source?path=${componentPath}`);
-      const data = await response.json();
-      if (data.source) {
-        setSource(data.source);
-      }
-    };
-
-    fetchSource();
-  }, [componentPath]);
-
-  if (!source) {
-    return <div>Loading...</div>;
-  }
+export default function PreviewComponent({
+  componentName,
+  demoComponent,
+  demoCodePath,
+}: PreviewComponentProps) {
+  const demoCode = fetchDemoCode(demoCodePath)
+  const demoGlobals = fetchGlobalsCode()
+  const demoTailwind = fetchTailwindCode()
 
   return (
-    <pre>
-      <code>{source}</code>
-    </pre>
-  );
-};
-
-export default PreviewComponent;
+    <div className='rounded-lg border border-border bg-background'>
+      <div className='flex min-h-[350px] items-center justify-center px-5 py-10 text-sm'>
+        {demoComponent}
+      </div>
+      <PreviewCodeBlock
+        componentName={componentName}
+        demoCode={demoCode}
+        demoGlobals={demoGlobals}
+        demoTailwind={demoTailwind}
+      />
+    </div>
+  )
+}

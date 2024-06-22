@@ -1,29 +1,28 @@
-import type { Metadata } from 'next'
-import { getMdxBySlug } from '@/lib/mdx'
-import { getMDXComponent } from 'mdx-bundler/client'
-import { useMDXComponents } from '@/app/mdx-components'
+import type { Metadata } from 'next';
+import { getMdxBySlug } from '@/lib/mdx';
+import { getMDXComponent } from 'mdx-bundler/client';
+import { useMDXComponents } from '@/app/mdx-components';
+import React from 'react';
 
 interface DocPageProps {
   params: {
-    slug: string[]
-  }
+    slug: string[];
+  };
 }
 
-const components = useMDXComponents({})
-
 async function getDocContent({ params }: DocPageProps) {
-  const slug = params.slug?.join('/') || ''
-  const doc = await getMdxBySlug('components', slug)
-  return doc
+  const slug = params.slug?.join('/') || '';
+  const doc = await getMdxBySlug('components', slug);
+  return doc;
 }
 
 export async function generateMetadata({
   params,
 }: DocPageProps): Promise<Metadata> {
-  const doc = await getDocContent({ params })
+  const doc = await getDocContent({ params });
 
   if (!doc) {
-    return {}
+    return {};
   }
 
   return {
@@ -40,20 +39,22 @@ export async function generateMetadata({
       description: doc.frontmatter.metaDescription,
       creator: '@austinmcomer',
     },
-  }
+  };
 }
 
 export default async function ComponentsDoc({ params }: DocPageProps) {
-  const doc = await getDocContent({ params })
-  const Component = getMDXComponent(doc.code)
+  const doc = await getDocContent({ params });
+  const Component = getMDXComponent(doc.code);
+
+  const components = useMDXComponents({}); // Move useMDXComponents inside the component
 
   return (
-      <div className='flex justify-center lg:ml-[250px] min-[1395px]:ml-[0px]'>
-        <div className='mb-[100px] mt-[70px] h-full w-full max-w-4xl px-5 py-7 lg:mt-[100px]'>
-          <div className='flex flex-col justify-center gap-14'>
-            <Component components={components as any} />
-          </div>
+    <div className='flex justify-center lg:ml-[250px] min-[1395px]:ml-[0px]'>
+      <div className='mb-[100px] mt-[70px] h-full w-full max-w-4xl px-5 py-7 lg:mt-[100px]'>
+        <div className='flex flex-col justify-center gap-14'>
+          <Component components={components as any} />
         </div>
       </div>
-  )
+    </div>
+  );
 }

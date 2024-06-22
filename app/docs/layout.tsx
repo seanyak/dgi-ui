@@ -2,10 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-
 import GlobalNav from '@/components/globalNav';
 import { RemoveScroll } from 'react-remove-scroll';
-
 import { cn } from '@/lib/utils';
 
 export default function DocsLayout({ children }: { children: React.ReactNode }) {
@@ -13,9 +11,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
   const pathname = usePathname();
 
   useEffect(() => {
-    if (mobileNavOpen) {
-      setMobileNavOpen((prev) => !prev); // Functional update to handle the previous state
-    }
+    setMobileNavOpen(false); // Always set to false when pathname changes
   }, [pathname]);
 
   return (

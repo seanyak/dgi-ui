@@ -43,7 +43,7 @@ export default function Community() {
             Explore our source code, check out the GitHub repo.
           </p>
           <a
-            href='https://github.com/'
+            href='https://github.com/seanyak/dgi-ui'
             target='_blank'
             rel='noopener noreferrer'
             className='text-sky-500 hover:underline dark:text-sky-300'

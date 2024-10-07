@@ -125,7 +125,7 @@
   }
 
   .wire1 {
-    @apply border border-emerald-500;
+    @apply border border-emerald-400;
   }
 
   .wire2 {
